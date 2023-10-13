@@ -1,11 +1,9 @@
-import { useState } from 'react';
-
 import NavBar from './components/NavBar/NavBar'
-import Brand from './components/Brand/Brand'
 import ProductListContainer from './components/ItemListContainer/ItemListContainer'
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Brand from './components/Brand/Brand';
 
 
 function App() {
@@ -13,7 +11,7 @@ function App() {
   return (
     <>
       <NavBar BrandName={nameOfBrand}/>
-      <Brand titulo='Hold'></Brand>
+      <Brand props={nameOfBrand}/>
       <ProductListContainer greeting='saludo desde App'/>
     </>
   )
