@@ -9,9 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+  const nameOfBrand = 'Street Burger'
   return (
     <>
-      <NavBar />
+      <NavBar BrandName={nameOfBrand}/>
       <Brand titulo='Hold'></Brand>
       <ProductListContainer greeting='saludo desde App'/>
     </>
