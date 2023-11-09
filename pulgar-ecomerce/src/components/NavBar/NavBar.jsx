@@ -1,9 +1,11 @@
 import Cart from "../Cart/Cart";
 
+
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link, NavLink } from "react-router-dom";
 
 function NavBar({BrandName}) {
   return (
@@ -14,23 +16,19 @@ function NavBar({BrandName}) {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Inicio</Nav.Link>
+              <Link to='/'>Inicio</Link>
               <Nav.Link href="#pricing">Contacto</Nav.Link>
-              <NavDropdown title="Catálogo" id="collapsible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Burgers</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Snacks</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Promociones
-                </NavDropdown.Item>
+                <NavLink className={({isActive}) => isActive ? 'btn btn-primary' : 'btn' } to='/category/Burgers'>Burgers</NavLink>
+                <br/>
+                <NavLink className={({isActive}) => isActive ? 'btn btn-primary' : 'btn' } to='/category/Snacks'>Snacks</NavLink>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Ver todo</NavDropdown.Item>
-              </NavDropdown>
+                <NavLink className={({isActive}) => isActive ? 'btn btn-primary' : 'btn' } to="/">Ver todo</NavLink>
             </Nav>
             <Nav>
               <Nav.Link href="#deets">Welcome to the Burger World</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
+              <Link to='/cart'>
                 <Cart />
-              </Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
