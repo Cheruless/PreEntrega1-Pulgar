@@ -1,6 +1,13 @@
+import { Link } from "react-router-dom"
+
 const Cart = () => {
   return (
-    <div>🛒</div>
+    <Link>
+    🛒
+    <span>
+      0
+    </span>
+    </Link>
   )
 }
 

@@ -1,24 +1,25 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
-import { useCounter } from "../hooks/useCounter";
+import { useCounter } from "../hooks/useCounter.jsx";
 
-export const ItemCounter = ({id, initial, stock}) => {
-  const {count, handleResta, handleSuma} = useCounter(initial, stock)
-  
+export const ItemCounter = ({initial, stock, Add}) => {
+  const {count, handleReduce, handleIncrease} = useCounter(initial, stock)
+
+
+  const handleOnAdd = ()=>{
+    Add(count)
+}
   return (
     <>
       <div>
-        <p>{count}</p>
+        <p className="text-black" >Cantidad: {count}</p>
       </div>
       <div>
-        <button onClick={handleResta} className="btn btn-outline-dark"> - </button>
-        <button onClick={handleSuma} className="btn btn-outline-dark"> + </button>
-        <button onClick={()=>console.log(count)} className="btn btn-outline-dark w-75"> Agregar al carrito </button>
+        <button onClick={handleReduce} className="btn btn-outline-dark" alt="Restar cantidad"> - </button>
+        <button onClick={handleIncrease} className="btn btn-outline-dark" alt="Sumar cantidad" > + </button>
+        <button onClick={handleOnAdd} className="btn btn-outline-dark w-75" alt="Agregar producto al carrito" > Agregar al carrito </button>
       </div>
       <div>
-        <Link to={`/item/${id}` }>
-          <button className="btn btn-outline-dark w-100">Detalle</button>
-        </Link>
+        
       </div>
     </>
   )

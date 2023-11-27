@@ -1,18 +1,21 @@
-import { ItemCounter } from "../ItemCounter/ItemCounter";
-
 /* eslint-disable react/prop-types */
+
+import { Link } from "react-router-dom";
+
 const Item = ({ product }) => {
   return (
     <div className="card w-25 flex-column ">
       <div className="card-img">
-        <img className="img-fluid" src={product.imgUrl} />
+        <img className="img-fluid" src={product.img} />
       </div>
       <div className="card-body">
         <p>{product.name}</p>
-        <p>{product.price}</p>
+        <p>{product.price.toLocaleString('es-ES', { style: 'currency', currency: 'CLP' })}</p>
       </div>
       <div className="card-footer">
-        <ItemCounter id={product.id} initial={0} stock={product.stock} />
+        <Link to={`/item/${product.id}`}>
+          <button className="btn btn-outline-dark w-100">Detalle</button>
+        </Link>
       </div>
     </div>
   );

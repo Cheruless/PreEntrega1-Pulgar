@@ -1,30 +1,26 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { mFetch } from "../products/products";
-import { ItemCounter } from "../ItemCounter/ItemCounter";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+
+import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState({});
-  const {pid} = useParams()
+  const [loading, setLoading] = useState(true);
+  const [product, setProduct] = useState({ id: "" });
+  const { pid } = useParams();
 
-  useEffect(()=>{
-    mFetch(pid)
-    .then(res => setProduct(res))
-    .catch(error => console.log(error))
-  }, [])
-  return (
-    <div className="row">
-      <div className="col-6 mt-5">
-        <img className="img-fluid" src={product.imgUrl} />
-      </div>
-      <div className="col-6 text-center mt-5">
-        <h1>{product.name}</h1>
-        <h3>${product.price}</h3>
-        <ItemCounter id={product.id} initial={1} stock={product.stock}/>
-      </div>
-    </div>
-  )
-}
+  useEffect(() => {
+    const dbFireStore = getFirestore();
+    getDoc(doc(dbFireStore, "products", pid))
+      .then((res) => {
+        setProduct({ id: res.id, ...res.data() });
+      })
+      .catch((error) => console.log("Error al cargar producto: ", error))
+      .finally(setLoading(false));
+  }, [pid]);
 
-export default ItemDetailContainer
+  return <ItemDetail product={product} />;
+};
+
+export default ItemDetailContainer;
