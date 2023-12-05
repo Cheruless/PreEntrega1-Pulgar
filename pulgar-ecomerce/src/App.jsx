@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Brand from "./components/Brand/Brand";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import Cart from "./components/Cart/Cart";
+import Cart from "./components/CartContainer/CartContainer";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";

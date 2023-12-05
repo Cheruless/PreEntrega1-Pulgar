@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export const useCounter = (item, min, max) => {
+export const useCounter = (min, max) => {
   const [count, setCount] = useState(min);
 
   const handleIncrease = () => {

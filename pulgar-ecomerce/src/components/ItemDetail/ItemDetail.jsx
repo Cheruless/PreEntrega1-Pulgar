@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 const ItemDetail = ({ product }) => {
   const [isCount, setIsCount] = useState(true);
   const { addToCart } = useCartContext();
+
   const handleAdd = (cant) => {
-    addToCart({ ...product, cant });
+    console.log(`Sumando ${cant} del producto ${product.name}.`);
+    addToCart({ ...product}, cant );
     setIsCount(false);
   };
 
@@ -21,23 +23,22 @@ const ItemDetail = ({ product }) => {
         <h2>{product.name}</h2>
         <h3>${product.price}</h3>
         <p>{product.desc}</p>
-        {
-          isCount?
-            <ItemCounter
-              initial={1}
-              stock={product.stock}
-              handleAdd={handleAdd}
-            />
-          :
-            <>
-              <Link className="btn btn-outline-dark " to="/cart">
-                Ir al Carro
-              </Link>
-              <Link className="btn btn-outline-dark " to="/">
-                Ir al Home
-              </Link>
-            </>
-        }
+        {isCount ? (
+          <ItemCounter
+            initial={1}
+            stock={product.stock}
+            handleAdd={handleAdd}
+          />
+        ) : (
+          <>
+            <Link className="btn btn-outline-dark " to="/cart">
+              Ir al Carro
+            </Link>
+            <Link className="btn btn-outline-dark " to="/">
+              Continuar comprando
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
 import { Link, NavLink } from "react-router-dom";
 
-import Cart from "../Cart/Cart";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
+import { CartWidget } from "../CartWidget/CartWidget";
 
 function NavBar({ BrandName = "Street Burger" }) {
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">{BrandName}</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/" >{BrandName}</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -52,7 +52,7 @@ function NavBar({ BrandName = "Street Burger" }) {
             </Nav>
             <Nav>
               <Link to="/cart">
-                <Cart />
+                <CartWidget />
               </Link>
             </Nav>
           </Navbar.Collapse>

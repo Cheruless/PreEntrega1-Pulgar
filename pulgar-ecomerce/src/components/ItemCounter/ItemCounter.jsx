@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useCounter } from "../hooks/useCounter.jsx";
 
-export const ItemCounter = ({initial, stock, Add}) => {
+export const ItemCounter = ({initial, stock, handleAdd}) => {
   const {count, handleReduce, handleIncrease} = useCounter(initial, stock)
 
 
-  const handleOnAdd = ()=>{
-    Add(count)
-}
+  const handleOnAdd = ()=>
+    handleAdd(count)
+
   return (
     <>
       <div>
