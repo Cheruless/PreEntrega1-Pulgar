@@ -8,13 +8,17 @@ import Cart from "./components/CartContainer/CartContainer";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import "sweetalert2/dist/sweetalert2.css";
 import { CartContextProvider } from "./contexts/CartContext/CartContext";
 import CheckOut from "./components/CheckOut/CheckOut";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const nameOfBrand = "Street Burger";
   return (
     <>
+      <ToastContainer />
       <CartContextProvider >
         <BrowserRouter>
           <NavBar BrandName={nameOfBrand} />

@@ -1,17 +1,18 @@
 import { createContext, useContext, useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { toast, ToastContainer } from "react-toastify";
 
 const CartContext = createContext([]);
 
 export const useCartContext = () => useContext(CartContext);
 
 function askToAdd(cart, item, cant, setCart) {
-  // TODO: AGREGAR UNA SWEET ALERT DE SER POSIBLE PARA UI
+  console.log("item", item);
   Swal.fire({
-    title: `Está añadiendo el producto ${item.name} que ya se encuentra en el carro ${cant} veces. ¿Desea sumarlo?`,
+    title: `Está sumando el producto ${item.name} ${cant} veces. ¿Desea sumarlo?`,
     showCancelButton: true,
-    confirmButtonText: 'Sí',
-    cancelButtonText: 'No',
+    confirmButtonText: "Sí",
+    cancelButtonText: "No",
   }).then((userResponse) => {
     if (userResponse) {
       // Sumar la cantidad al producto existente en el carrito original
@@ -22,11 +23,22 @@ function askToAdd(cart, item, cant, setCart) {
           : product
       );
       setCart(updatedCart);
+
+      toast.success("Carro actualizado correctamente", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored"
+      });
+
       console.log("El usuario ha seleccionado Sí.");
     } else {
       console.log("El usuario ha seleccionado No o ha cerrado el diálogo.");
     }
-  })
+  });
 }
 
 export const CartContextProvider = ({ children }) => {
@@ -35,10 +47,19 @@ export const CartContextProvider = ({ children }) => {
 
   const addToCart = (item, cant) => {
     const itemToAdd = { ...item, cant };
-    console.log(cant)
+    console.log(cant);
     cartList.find((product) => product.id === itemToAdd.id)
       ? askToAdd(cartList, item, cant, setCart)
-      : setCart([...cartList, itemToAdd]);
+      : (setCart([...cartList, itemToAdd]),
+        toast.success("Se ha agregado el producto al carro.", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored"
+        }));
   };
 
   const removeFromCart = (itemID) => {

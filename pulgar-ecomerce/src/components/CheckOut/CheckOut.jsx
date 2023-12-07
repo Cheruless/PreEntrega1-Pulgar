@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useCartContext } from "../../contexts/CartContext/CartContext";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { toast } from "react-toastify";
+
+//TODO: MODULARIZAR CODIGO PARA ENTREGA FINAL
 
 const Checkout = () => {
   const { cartList } = useCartContext();
@@ -57,7 +60,6 @@ const Checkout = () => {
     const db = getFirestore();
     const queryCollection = collection(db, "orders");
     const order = {};
-    
 
     // Se valida campos antes de enviar el form
     const isFirstNameValid = validateText(formData.firstName, "firstName");
@@ -76,11 +78,34 @@ const Checkout = () => {
       }));
       order.total = totalPrice;
 
-      addDoc(queryCollection, order)
-        .then((res) => console.log(res))
-        .catch((reg) => console.log(reg));
+      toast.info("Procesando pedido...", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
 
-      console.log("Formulario enviado:", order);
+      addDoc(queryCollection, order)
+        .then(() => toast.success("¡Pedido realizado con éxito!", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored"
+        }))
+        .catch((reg) => toast.error(`Error al realizar pedido: ${reg}`, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored"
+        }));
     }
   };
 
