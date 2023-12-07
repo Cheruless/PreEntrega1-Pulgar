@@ -16,10 +16,7 @@ export const ItemCounter = ({initial, stock, handleAdd}) => {
       <div>
         <button onClick={handleReduce} className="btn btn-outline-dark" alt="Restar cantidad"> - </button>
         <button onClick={handleIncrease} className="btn btn-outline-dark" alt="Sumar cantidad" > + </button>
-        <button onClick={handleOnAdd} className="btn btn-outline-dark w-75" alt="Agregar producto al carrito" > Agregar al carrito </button>
-      </div>
-      <div>
-        
+        <button onClick={handleOnAdd} className="btn btn-success w-75" alt="Agregar producto al carrito" > Agregar al carrito </button>
       </div>
     </>
   )

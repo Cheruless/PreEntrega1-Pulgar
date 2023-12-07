@@ -41,6 +41,11 @@ export const CartContextProvider = ({ children }) => {
       : setCart([...cartList, itemToAdd]);
   };
 
+  const removeFromCart = (itemID) => {
+    const updatedCart = cartList.filter((product) => product.id !== itemID);
+    setCart(updatedCart);
+  };
+
   const clearCart = () => setCart([]);
 
   return (
@@ -48,6 +53,7 @@ export const CartContextProvider = ({ children }) => {
       value={{
         cartList,
         addToCart,
+        removeFromCart,
         clearCart,
       }}
     >

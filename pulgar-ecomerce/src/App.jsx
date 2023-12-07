@@ -9,6 +9,7 @@ import Cart from "./components/CartContainer/CartContainer";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CartContextProvider } from "./contexts/CartContext/CartContext";
+import CheckOut from "./components/CheckOut/CheckOut";
 
 function App() {
   const nameOfBrand = "Street Burger";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/category/:cid" element={<ItemListContainer />} />
             <Route path="/item/:pid" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<CheckOut />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>

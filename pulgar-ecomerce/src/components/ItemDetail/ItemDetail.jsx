@@ -10,35 +10,41 @@ const ItemDetail = ({ product }) => {
 
   const handleAdd = (cant) => {
     console.log(`Sumando ${cant} del producto ${product.name}.`);
-    addToCart({ ...product}, cant );
+    addToCart({ ...product }, cant);
     setIsCount(false);
   };
 
   return (
-    <div className="row">
-      <div className="col-6 mt-5">
-        <img className="img-fluid" src={product.img} />
-      </div>
-      <div className="col-6 text-center mt-5">
-        <h2>{product.name}</h2>
-        <h3>${product.price}</h3>
-        <p>{product.desc}</p>
-        {isCount ? (
-          <ItemCounter
-            initial={1}
-            stock={product.stock}
-            handleAdd={handleAdd}
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-md-6">
+          <img
+            className="img-fluid"
+            src={product.img}
+            alt={`Imágen de ${product.name}`}
           />
-        ) : (
-          <>
-            <Link className="btn btn-outline-dark " to="/cart">
-              Ir al Carro
-            </Link>
-            <Link className="btn btn-outline-dark " to="/">
-              Continuar comprando
-            </Link>
-          </>
-        )}
+        </div>
+        <div className="col-md-6 text-center">
+          <h2>{product.name}</h2>
+          <h3 className="text-success">${product.price}</h3>
+          <p>{product.desc}</p>
+          {isCount ? (
+            <ItemCounter
+              initial={1}
+              stock={product.stock}
+              handleAdd={handleAdd}
+            />
+          ) : (
+            <div className="mt-3">
+              <Link to="/cart" className="btn btn-success">
+                Ir al Carro
+              </Link>
+              <Link to="/" className="btn btn-primary ms-2">
+                Continuar comprando
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
