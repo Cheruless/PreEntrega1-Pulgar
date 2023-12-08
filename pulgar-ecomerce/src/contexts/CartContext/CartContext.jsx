@@ -1,3 +1,4 @@
+//Componente que permite la gestión del estado del carro en la app
 import { createContext, useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";

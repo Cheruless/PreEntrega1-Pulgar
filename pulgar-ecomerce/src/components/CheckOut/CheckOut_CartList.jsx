@@ -1,3 +1,4 @@
+//Componente que muestra los productos del carro en el proceso de pago.
 const CheckOut_CartList = ({ cartList, totalPrice }) => (
   <div className="col-md-5">
     <h4 className="d-flex justify-content-between align-items-center mb-3">

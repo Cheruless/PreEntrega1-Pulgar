@@ -1,3 +1,4 @@
+//Componente que muestra formulario de datos de persona que comprará.
 const Checkout_Form = ({ formData, handleInputChange, handleSubmit }) => (
   <div className="col-md-7">
     <h2>Datos del Comprador</h2>

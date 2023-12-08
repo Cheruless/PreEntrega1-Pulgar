@@ -1,3 +1,4 @@
+//Componente que se encarga de recolectar información del comprador, validar y enviar el pedido a la base de datos.
 import { useState } from "react";
 import { useCartContext } from "../../contexts/CartContext/CartContext";
 import { addDoc, collection, getFirestore } from "firebase/firestore";

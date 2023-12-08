@@ -1,3 +1,5 @@
+//Componente que muestra los productos en el carro con interaccion.
+
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../contexts/CartContext/CartContext";
 import CartItem from "./CartItem";

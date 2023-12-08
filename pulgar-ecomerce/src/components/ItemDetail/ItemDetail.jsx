@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+//Componente que permite controlar la cantidad, ir al carro o seguir comprando.
 import { ItemCounter } from "../ItemCounter/ItemCounter";
 import { useCartContext } from "../../contexts/CartContext/CartContext";
 import { useState } from "react";

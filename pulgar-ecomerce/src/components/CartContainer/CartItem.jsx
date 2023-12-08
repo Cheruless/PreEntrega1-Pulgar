@@ -1,4 +1,4 @@
-
+//Componente que representa un articulo en el carro de compras.
 const CartItem = ({ product, removeFromCart }) => (
   <div key={product.id} className="col-md-6 mb-3">
     <div className="card">
