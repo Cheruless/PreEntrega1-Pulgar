@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useCartContext } from "../../contexts/CartContext/CartContext";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { toast } from "react-toastify";
-
-//TODO: MODULARIZAR CODIGO PARA ENTREGA FINAL
+import Checkout_Form from "./CheckOut_Form";
+import CheckOut_CartList from "./CheckOut_CartList";
 
 const Checkout = () => {
   const { cartList } = useCartContext();
@@ -112,102 +112,16 @@ const Checkout = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-7">
-          <h2>Datos del Comprador</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="firstName" className="form-label">
-                Nombre
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="lastName" className="form-label">
-                Apellidos
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="address" className="form-label">
-                Dirección de Envío
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="address"
-                name="address"
-                value={formData.address}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="phoneNumber" className="form-label">
-                Número de Teléfono
-              </label>
-              <input
-                type="tel"
-                className="form-control"
-                id="phoneNumber"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Confirmar Compra
-            </button>
-          </form>
-        </div>
-
-        <div className="col-md-5">
-          {/* Sección del carro */}
-          <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-primary">Tu pedido</span>
-            <span className="badge bg-primary rounded-pill">
-              {cartList.length}
-            </span>
-          </h4>
-          <ul className="list-group mb-3">
-            {/* Mapeo de productos en el carro */}
-            {cartList.map((product) => (
-              <li
-                key={product.id}
-                className="list-group-item d-flex justify-content-between lh-sm"
-              >
-                {/* Detalles del producto en el carrito */}
-                <div>
-                  <h6 className="my-0">{product.name}</h6>
-                  <small className="text-body-secondary">{product.desc}</small>
-                </div>
-                <span className="text-body-secondary">
-                  ${product.price * product.cant}
-                </span>
-              </li>
-            ))}
-            <li className="list-group-item d-flex justify-content-between">
-              <span>Total: </span>
-              <strong>${totalPrice}</strong>
-            </li>
-          </ul>
-        </div>
+        <Checkout_Form
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
+        
+        <CheckOut_CartList
+          cartList={cartList}
+          totalPrice={totalPrice}
+        />
       </div>
     </div>
   );

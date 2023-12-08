@@ -1,9 +1,7 @@
-/* eslint-disable react/prop-types */
 import { useCounter } from "../hooks/useCounter.jsx";
 
 export const ItemCounter = ({initial, stock, handleAdd}) => {
   const {count, handleReduce, handleIncrease} = useCounter(initial, stock)
-
 
   const handleOnAdd = ()=>
     handleAdd(count)

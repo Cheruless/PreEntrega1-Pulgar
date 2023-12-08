@@ -9,7 +9,6 @@ const ItemDetail = ({ product }) => {
   const { addToCart } = useCartContext();
 
   const handleAdd = (cant) => {
-    console.log(`Sumando ${cant} del producto ${product.name}.`);
     addToCart({ ...product }, cant);
     setIsCount(false);
   };
@@ -28,13 +27,14 @@ const ItemDetail = ({ product }) => {
           <h2>{product.name}</h2>
           <h3 className="text-success">${product.price}</h3>
           <p>{product.desc}</p>
-          {isCount ? (
             <ItemCounter
               initial={1}
               stock={product.stock}
               handleAdd={handleAdd}
             />
-          ) : (
+          {isCount
+            ? null
+            : 
             <div className="mt-3">
               <Link to="/cart" className="btn btn-success">
                 Ir al Carro
@@ -43,7 +43,7 @@ const ItemDetail = ({ product }) => {
                 Continuar comprando
               </Link>
             </div>
-          )}
+          }
         </div>
       </div>
     </div>

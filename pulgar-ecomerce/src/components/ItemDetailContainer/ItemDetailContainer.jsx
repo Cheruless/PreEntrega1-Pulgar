@@ -1,27 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 import ItemDetail from "../ItemDetail/ItemDetail";
+import useProduct from "../hooks/useProduct";
 
 const ItemDetailContainer = () => {
-  const [loading, setLoading] = useState(true);
-  const [product, setProduct] = useState({});
   const { pid } = useParams();
-
-  useEffect(() => {
-    const dbFireStore = getFirestore();
-    getDoc(doc(dbFireStore, "products", pid))
-      .then((res) => {
-        res.exists()
-          ? setProduct({ id: res.id, ...res.data() })
-          : console.log("El producto no existe");
-      })
-      .catch((error) => console.log("Error al cargar producto: ", error))
-      .finally(setLoading(false));
-  }, [pid]);
-
+  const {loading, product} = useProduct(pid);
+  
   return (
     <>
       {loading ? (
