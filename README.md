@@ -1,7 +1,7 @@
 # PreEntrega1-Pulgar
 
 E-commerce inspirado en un negocio local de la comuna de Villa Alemana, Chile. Las imágenes son sacadas desde búsquedas en Google relacionadas al nombre del producto.
-Demo:
+Demo: https://pre-entrega1-pulgar.vercel.app
 
 ## Dependencias
 - **bootstrap**:
