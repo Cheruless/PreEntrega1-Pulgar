@@ -1,7 +1,18 @@
 # PreEntrega1-Pulgar
 
-E-commerce inspirado en un negocio local de la comuna de Villa Alemana, Chile. Las imágenes son sacadas desde búsquedas en Google relacionadas al nombre del producto.
-Demo: https://pre-entrega1-pulgar.vercel.app
+Este proyecto representa un E-commerce inspirado en un negocio local de la comuna de Villa Alemana, Chile. Las imágenes utilizadas se obtuvieron mediante búsquedas en Google relacionadas con el nombre del producto.
+
+**Demo:** [PreEntrega1-Pulgar](https://pre-entrega1-pulgar.vercel.app)
+
+## Configuración de Firebase
+```javascript
+  apiKey: "AIzaSyArKSy1M3bbfEnaRoDF51tVwQjX2f8ulWc",
+  authDomain: "pulgarecommerce.firebaseapp.com",
+  projectId: "pulgarecommerce",
+  storageBucket: "pulgarecommerce.appspot.com",
+  messagingSenderId: "867568529166",
+  appId: "1:867568529166:web:21c84be3198bff6b71715f"
+```
 
 ## Dependencias
 - **bootstrap**:
