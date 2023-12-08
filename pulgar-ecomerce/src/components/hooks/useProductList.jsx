@@ -41,6 +41,8 @@ const useProductList = (cid) => {
       .catch((reg) => showToast(`Error al cargar producto: ${reg}`))
       .finally(() => setLoading(false));
   }, [cid]);
+
+  return {loading, products}
 };
 
 export default useProductList;
