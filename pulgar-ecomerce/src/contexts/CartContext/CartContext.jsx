@@ -1,9 +1,11 @@
 //Componente que permite la gestión del estado del carro en la app
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 
 const CartContext = createContext([]);
+
+const startCart = JSON.parse(localStorage.getItem("Carro")) || [];
 
 export const useCartContext = () => useContext(CartContext);
 
@@ -45,7 +47,11 @@ function askToAdd(cart, item, cant, setCart) {
 }
 
 export const CartContextProvider = ({ children }) => {
-  const [cartList, setCart] = useState([]);
+  const [cartList, setCart] = useState(startCart);
+
+  useEffect(()=>{
+    localStorage.setItem("Carro", JSON.stringify(cartList));
+  }, [cartList]);
 
   const addToCart = (item, cant) => {
     const itemToAdd = { ...item, cant };
