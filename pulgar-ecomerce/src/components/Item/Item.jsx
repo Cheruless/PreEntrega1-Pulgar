@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Item = ({ product }) => {
   return (
-    <div className="card mb-3" style={{ maxWidth: "300px" }}>
+    <div className="card card mb-3" style={{ maxWidth: "300px" }}>
       <img
         src={product.img}
         alt={`Imágen de ${product.name}`}

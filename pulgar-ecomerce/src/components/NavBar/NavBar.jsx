@@ -20,7 +20,7 @@ function NavBar({ BrandName = "Street Burger" }) {
             <Nav className="me-auto">
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn-outline-primary" : "btn"
+                  isActive ? "btn btn-outline-custom" : "btn"
                 }
                 to="/"
               >
@@ -28,7 +28,7 @@ function NavBar({ BrandName = "Street Burger" }) {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn-outline-primary" : "btn"
+                  isActive ? "btn btn-outline-custom" : "btn"
                 }
                 to="/category/burgers"
               >
@@ -36,7 +36,7 @@ function NavBar({ BrandName = "Street Burger" }) {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn-outline-primary" : "btn"
+                  isActive ? "btn btn-outline-custom" : "btn"
                 }
                 to="/category/snacks"
               >
@@ -45,7 +45,7 @@ function NavBar({ BrandName = "Street Burger" }) {
               <NavDropdown.Divider />
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "btn btn-outline-primary" : "btn"
+                  isActive ? "btn btn-outline-custom" : "btn"
                 }
                 to="/"
               >

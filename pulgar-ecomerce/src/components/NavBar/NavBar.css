@@ -2,12 +2,13 @@
   background-color: #ff66c433;
 }
 
-.nav-link.btn-outline-primary {
+.btn.btn-outline-custom {
   color: #0e0a01;
   border-color: #ff66c4;
 }
 
-.nav-link.btn-outline-primary:hover {
+.btn.btn-outline-custom:hover {
+  color: #fefaf1;
   background-color: #ff66c4;
   border-color: #ff66c4;
 }
