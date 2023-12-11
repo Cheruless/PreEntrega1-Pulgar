@@ -1,0 +1,22 @@
+.cart-widget-container {
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;  /* Ajusta el margen según sea necesario */
+}
+
+.cart-icon {
+  font-size: 24px;  /* Ajusta el tamaño del icono según sea necesario */
+  color: #ff66c4;  /* Color personalizado */
+}
+
+/* Estilo opcional para el contador de elementos en el carrito */
+.cart-counter {
+  position: absolute;
+  top: -8px;
+  /* right: -8px; */
+  background-color: #ff66c4;
+  color: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 12px;
+}

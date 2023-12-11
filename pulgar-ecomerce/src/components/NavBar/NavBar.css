@@ -1,0 +1,13 @@
+.bg-body-custom {
+  background-color: #ff66c433;
+}
+
+.nav-link.btn-outline-primary {
+  color: #0e0a01;
+  border-color: #ff66c4;
+}
+
+.nav-link.btn-outline-primary:hover {
+  background-color: #ff66c4;
+  border-color: #ff66c4;
+}

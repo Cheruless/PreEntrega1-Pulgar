@@ -7,10 +7,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import { CartWidget } from "../CartWidget/CartWidget";
 
+import './NavBar.css';
+
 function NavBar({ BrandName = "Street Burger" }) {
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" className="bg-body-custom">
         <Container>
           <Navbar.Brand as={NavLink} to="/" >{BrandName}</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -51,8 +53,9 @@ function NavBar({ BrandName = "Street Burger" }) {
               </NavLink>
             </Nav>
             <Nav>
-              <Link to="/cart">
-                <CartWidget />
+              <Link 
+              to="/cart">
+                <CartWidget/>
               </Link>
             </Nav>
           </Navbar.Collapse>
