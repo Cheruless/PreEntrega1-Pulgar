@@ -46,7 +46,7 @@ const Checkout_Form = ({ formData, handleInputChange, handleSubmit }) => (
         />
       </div>
       <div className="mb-2">
-        <label htmlFor="address" className="form-label">
+        <label htmlFor="email" className="form-label">
           Correo electrónico
         </label>
         <input
