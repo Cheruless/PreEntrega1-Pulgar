@@ -17,6 +17,7 @@ const Checkout = () => {
     lastName: "",
     address: "",
     phoneNumber: "",
+    email: "",
   });
 
   const [errors, setErrors] = useState({
@@ -24,6 +25,7 @@ const Checkout = () => {
     lastName: "",
     address: "",
     phoneNumber: "",
+    email: "",
   });
 
   const totalPrice = cartList.reduce((total, product) => {
@@ -60,6 +62,18 @@ const Checkout = () => {
     return true;
   };
 
+  const validateEmail = (value, fieldName) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      setErrors({
+        ...errors,
+        [fieldName]: "Ingrese una dirección de correo electrónico válida",
+      });
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const db = getFirestore();
@@ -73,8 +87,9 @@ const Checkout = () => {
       formData.phoneNumber,
       "phoneNumber"
     );
+    const isEmailValid = validateEmail(formData.email, "email");
 
-    if (isFirstNameValid && isLastNameValid && isPhoneNumberValid) {
+    if (isFirstNameValid && isLastNameValid && isPhoneNumberValid && isEmailValid) {
       order.buyer = formData;
       order.items = cartList.map((product) => ({
         id: product.id,

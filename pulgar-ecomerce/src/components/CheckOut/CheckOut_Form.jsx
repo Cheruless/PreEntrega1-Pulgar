@@ -31,7 +31,7 @@ const Checkout_Form = ({ formData, handleInputChange, handleSubmit }) => (
           required
         />
       </div>
-      <div className="mb-3">
+      <div className="mb-2">
         <label htmlFor="address" className="form-label">
           Dirección de Envío
         </label>
@@ -45,7 +45,21 @@ const Checkout_Form = ({ formData, handleInputChange, handleSubmit }) => (
           required
         />
       </div>
-      <div className="mb-3">
+      <div className="mb-2">
+        <label htmlFor="address" className="form-label">
+          Correo electrónico
+        </label>
+        <input
+          type="email"
+          className="form-control"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+      <div className="mb-2">
         <label htmlFor="phoneNumber" className="form-label">
           Número de Teléfono
         </label>
