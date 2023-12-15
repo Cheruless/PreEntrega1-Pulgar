@@ -3,11 +3,15 @@ import { useState } from "react";
 import { useCartContext } from "../../contexts/CartContext/CartContext";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 import Checkout_Form from "./CheckOut_Form";
 import CheckOut_CartList from "./CheckOut_CartList";
 
 const Checkout = () => {
-  const { cartList } = useCartContext();
+  const { cartList, clearCart } = useCartContext();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -89,24 +93,28 @@ const Checkout = () => {
       });
 
       addDoc(queryCollection, order)
-        .then(() => toast.success("¡Pedido realizado con éxito!", {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "colored"
-        }))
-        .catch((reg) => toast.error(`Error al realizar pedido: ${reg}`, {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "colored"
-        }));
+        .then((docOrder) => {
+          Swal.fire({
+            title: "Pedido realizado con éxito.",
+            text: `El ID de su orden es: ${docOrder.id}. Por favor guarde este ID`,
+            icon: "success",
+            confirmButtonText: "Ok",
+          }).then(() => {
+            clearCart();
+            navigate("/");
+          });
+        })
+        .catch((reg) =>
+          toast.error(`Error al realizar pedido: ${reg}`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          })
+        );
     }
   };
 
@@ -118,11 +126,8 @@ const Checkout = () => {
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
         />
-        
-        <CheckOut_CartList
-          cartList={cartList}
-          totalPrice={totalPrice}
-        />
+
+        <CheckOut_CartList cartList={cartList} totalPrice={totalPrice} />
       </div>
     </div>
   );
